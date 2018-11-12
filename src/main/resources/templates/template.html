@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+<span th:if="${#strings.length(mess) > 1}">
+    <div class="alert alert-primary" role="alert">
+        <span th:text="'Message: ' + ${mess}"></span>
+    </div>
+</span>
+
+<div class="jumbotron text-center">
+    <h1 th:text="${title}"></h1>
+    <p>Zadanie domowe 18</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Add category</h3>
+            <form method="get" action="/data/addCategory">
+                <div class="form-group">
+                    <label for="cat">Enter category:</label>
+                    <input type="text" class="form-control" id="cat" placeholder="new category" name="category">
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+
+        </div>
+        <div class="col-sm-4">
+            <h3>Add product</h3>
+            <form method="get" action="/data/addProduct">
+                <div class="form-group">
+                    <label for="prod">Enter product's name:</label>
+                    <input name="name" type="text" class="form-control" id="prod" placeholder="new product's name">
+                </div>
+                <div class="form-group">
+                    <label for="price">Enter price:</label>
+                    <input name="price" type="text" class="form-control" id="price" placeholder="price">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select Category</label>
+                    <select name="category" class="form-control" id="exampleFormControlSelect1"
+                            th:utext="${listOfCatChoice}">
+                    </select><br>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <h3>Others</h3>
+            <a href="/data/example" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create
+                example data</a>
+
+
+        </div>
+    </div>
+</div>
+<br><br>
+<div class="container">
+<h4>List of Categories:</h4>
+<div class="table-responsive">
+<table class="table" th:utext="${categoriesTable}"></table>
+</div>
+<br><br>
+<h4>List of Products:</h4>
+<div class="table-responsive">
+<table class="table" th:utext="${productsTable}"></table>
+</div>
+</div>
+</body>
+</html>

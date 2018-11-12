@@ -13,19 +13,19 @@ public class RootController {
     @GetMapping("/**")
     @ResponseBody
     public ModelAndView rootView(ModelMap model) {
-        return new ModelAndView( "redirect:/index", model);                                       // !!!! STATIC !!!!
+        return new ModelAndView("redirect:/data/view", model);                                       // !!!! STATIC !!!!
     }
 
-    @GetMapping("/data")
-    @ResponseBody
-    public ModelAndView dataView(ModelMap model) {
-        return new ModelAndView( "redirect:/data/view", model);                                       // !!!! STATIC !!!!
-    }
+//    @GetMapping("/data")
+//    @ResponseBody
+//    public ModelAndView dataView(ModelMap model) {
+//        return new ModelAndView("redirect:/data/view", model);                                       // !!!! STATIC !!!!
+//    }
 
-    @GetMapping("/index")
-    @ResponseBody
-    public String addView() {
-
-        return "index";
-    }
+//    @GetMapping("/index")
+//    @ResponseBody
+//    public String addView() {
+//
+//        return "index";
+//    }
 }
