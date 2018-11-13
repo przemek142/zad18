@@ -82,9 +82,15 @@ public class ProductsAndCategories {
                 lastUID = product.getUID();
         }
         try {
+            boolean productExist = false;
             ProductModel newProduct = new ProductModel(name, price, category, categories);
             newProduct.setUID(lastUID + 1);
-            products.add(newProduct);
+            for (ProductModel product : products) {
+                if (product.equals(newProduct))
+                    productExist = true;
+            }
+            if (!productExist)
+                products.add(newProduct);
             ArrayList<Object> msg = new ArrayList<>();
             msg.add("Added product");
             HashMap<Integer, ArrayList<Object>> payload = new HashMap<>();

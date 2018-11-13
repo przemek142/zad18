@@ -82,14 +82,16 @@ public class ProductModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductModel that = (ProductModel) o;
-        return Objects.equals(name, that.name) &&
-                Objects.equals(price, that.price) &&
-                Objects.equals(category, that.category);
+        return //catUID == that.catUID &&
+                Objects.equals(name, that.name); //&&
+        //        Objects.equals(price, that.price) &&
+        //        Objects.equals(category, that.category) &&
+        //        Objects.equals(priceBig, that.priceBig);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, price, category);
+        return Objects.hash(name, price, category, priceBig);
     }
 
     @Override
